@@ -1,2 +1,2 @@
-# vaedeloebsbanen
-Simple danish drinking game made in OOP
+# cardgame.py
+Simple cardgame made with Object oriented programming in python
