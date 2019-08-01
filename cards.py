@@ -1,5 +1,6 @@
 import random
 
+#Card
 class Card:
     def __init__(self, suit, val):
         self.suit = suit
@@ -11,7 +12,7 @@ class Card:
     def drawCard(self):
         return self.cards.pop()
 
-
+#Deck of cards
 class Deck:
     def __init__(self):
         self.cards = []
@@ -35,34 +36,42 @@ class Deck:
         return self.cards.pop()
 
 
-
+#Player management
 class PlayerGroup:
     def __init__(self):
-        self.suits= []
+        self.amount= []
+        self.player_list = []
+        self.points = 0
 
-    def player_dict(self):
-        player_dict = {}
-        keys = range(int(input("How many players? ")))
-        values = self.suits
-        for i in keys:
-            self.suits.append(input("Pick a suit: "))
-            player_dict[i] = values[i]
-        print(player_dict)
+    def amount_of_players(self):
+        self.amount = range(int(input("How many players? ")))
 
-class PointSystem:
-    pass
+    def create_players(self):
+        for x in self.amount:
+            new_player = Player(x, (input("Pick a suit: ")), self.points)
+            self.player_list.append(new_player)
 
+    def print_players(self): #How to print list???
+        for x in self.player_list:
+            print(str(x))
 
-
+# Player object (instatiated in PlayerGroup)
 class Player:
-    def __init__(self, points, suit):
+    def __init__(self, name, suit, points):
+        self.name = name
         self.suit = suit
         self.points = points
 
+    def __str__(self):
+        return f'Player{self.name} Suit: {self.suit} Points: {self.points}'
 
-# Instantiate PlayerGroup + print player_dict
+# Instantiate PlayerGroup + and print list containing instatiated players
 players = PlayerGroup()
-players.player_dict()
+players.amount_of_players()
+players.create_players()
+
+#Print player objects
+players.print_players()
 
 #Create deck, and shuffle
 deck = Deck()
@@ -71,33 +80,3 @@ deck.shuffle()
 #Draws a card and show it
 card = deck.drawCard()
 card.show()
-
-# If card is equal to player_suit: +1 point
-
-#Draw a new card
-
-#if all players has above 1 point, draw minus card
-
-#if suit == minus card: minus 1 point
-
-#Make minus card only able to run once, every "milestone"
-
-
-#When one player gets 5 points, the player wins
-
-
-
-        # for i in range (int(input("How many players? "))):
-        #     self.suit = input("Pick a suit: ")
-    #
-    # def amount(self):
-    #     for i in range(int(input("How many players? "))):
-    #         self.player_number.append(i)
-
-    # def playersuits(self):
-    #     for i in self.player_number:
-    #         self.suit = input("Pick a suit: ")
-
-    # def printplayers(self):
-    #     for i in self.player_number:
-    #         print(i)
