@@ -1,5 +1,4 @@
 import random
-
 #Card
 class Card:
     def __init__(self, suit, val):
@@ -65,6 +64,10 @@ class Player:
     def __str__(self):
         return f'Player{self.name} Suit: {self.suit} Points: {self.points}'
 
+    def add_point(self):
+        if self.suit == c.show:
+            self.points =+ 1
+
 # Instantiate PlayerGroup + and print list containing instatiated players
 players = PlayerGroup()
 players.amount_of_players()
@@ -80,3 +83,12 @@ deck.shuffle()
 #Draws a card and show it
 card = deck.drawCard()
 card.show()
+
+#ADD POINTS IF SUIT = PLAYER SUIT
+player = Player()
+player.add_point()
+
+#ROUND 2 POINTS
+
+#Print player objects
+players.print_players()
