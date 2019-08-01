@@ -54,6 +54,11 @@ class PlayerGroup:
         for x in self.player_list:
             print(str(x))
 
+    #PSEUDO CODE FOR POINT-SYSTEM
+    #def add_point(self):
+    #    if self.suit == c.show:
+    #        self.points =+ 1
+
 # Player object (instatiated in PlayerGroup)
 class Player:
     def __init__(self, name, suit, points):
@@ -63,10 +68,6 @@ class Player:
 
     def __str__(self):
         return f'Player{self.name} Suit: {self.suit} Points: {self.points}'
-
-    def add_point(self):
-        if self.suit == c.show:
-            self.points =+ 1
 
 # Instantiate PlayerGroup + and print list containing instatiated players
 players = PlayerGroup()
@@ -83,12 +84,3 @@ deck.shuffle()
 #Draws a card and show it
 card = deck.drawCard()
 card.show()
-
-#ADD POINTS IF SUIT = PLAYER SUIT
-player = Player()
-player.add_point()
-
-#ROUND 2 POINTS
-
-#Print player objects
-players.print_players()
