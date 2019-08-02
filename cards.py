@@ -1,15 +1,14 @@
 import random
+
 #Card
 class Card:
-    def __init__(self, suit, val):
-        self.suit = suit
+    def __init__(self, cardsuit, val):
+        self.cardsuit = cardsuit
         self.value = val
 
     def show(self):
-        print("{} of {}".format(self.value, self.suit))
+        print("{} of {}".format(self.value, self.cardsuit))
 
-    def drawCard(self):
-        return self.cards.pop()
 
 #Deck of cards
 class Deck:
@@ -27,15 +26,14 @@ class Deck:
             r = random.randint(0, i)
             self.cards[i], self.cards[r] = self.cards[r], self.cards[i]
 
-    def show(self):
+    def show(self, card, player): #in code (keep)
         for c in self.cards:
             c.show()
 
     def drawCard(self):
         return self.cards.pop()
 
-
-#Player management
+#Player Management
 class PlayerGroup:
     def __init__(self):
         self.amount= []
@@ -54,28 +52,27 @@ class PlayerGroup:
         for x in self.player_list:
             print(str(x))
 
-    #PSEUDO CODE FOR POINT-SYSTEM
-    #def add_point(self):
-    #    if self.suit == c.show:
-    #        self.points =+ 1
-
-# Player object (instatiated in PlayerGroup)
+# Player Object (instatiated in PlayerGroup)
 class Player:
-    def __init__(self, name, suit, points):
+    def __init__(self, name, playersuit, points):
         self.name = name
-        self.suit = suit
+        self.playersuit = playersuit
         self.points = points
 
     def __str__(self):
-        return f'Player{self.name} Suit: {self.suit} Points: {self.points}'
+        return f'Player{self.name} Suit: {self.playersuit} Points: {self.points}'
+
+    # TRYING TO ADD POINTS WHEN DRAWN CARDS SUIT = PLAYER SUIT YIKES
+    def add_points(self, deck, card):
+        if self.playersuit == self.cardsuit:
+            self.points += 1
+
 
 # Instantiate PlayerGroup + and print list containing instatiated players
-players = PlayerGroup()
-players.amount_of_players()
-players.create_players()
+PlayerManage = PlayerGroup()
+PlayerManage.amount_of_players()
+PlayerManage.create_players()
 
-#Print player objects
-players.print_players()
 
 #Create deck, and shuffle
 deck = Deck()
@@ -84,3 +81,18 @@ deck.shuffle()
 #Draws a card and show it
 card = deck.drawCard()
 card.show()
+
+
+#card.cardsuit #suit of drawn card
+
+
+# player = Player()
+# print(PlayerManage.playersuit)
+
+
+# print(PlayerManage.playersuit)
+
+# PlayerManage.print_suits()
+
+#Print player objects
+PlayerManage.print_players()
