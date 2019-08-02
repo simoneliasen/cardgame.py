@@ -48,7 +48,7 @@ class PlayerGroup:
             new_player = Player(x, (input("Pick a suit: ")), self.points)
             self.player_list.append(new_player)
 
-    def print_players(self): #How to print list???
+    def print_players(self): 
         for x in self.player_list:
             print(str(x))
 
@@ -61,11 +61,6 @@ class Player:
 
     def __str__(self):
         return f'Player{self.name} Suit: {self.playersuit} Points: {self.points}'
-
-    # TRYING TO ADD POINTS WHEN DRAWN CARDS SUIT = PLAYER SUIT YIKES
-    def add_points(self, deck, card):
-        if self.playersuit == self.cardsuit:
-            self.points += 1
 
 
 # Instantiate PlayerGroup + and print list containing instatiated players
