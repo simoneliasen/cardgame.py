@@ -9,7 +9,6 @@ class Card:
     def show(self):
         print("{} of {}".format(self.value, self.cardsuit))
 
-
 #Deck of cards
 class Deck:
     def __init__(self):
@@ -68,7 +67,6 @@ PlayerManage = PlayerGroup()
 PlayerManage.amount_of_players()
 PlayerManage.create_players()
 
-
 #Create deck, and shuffle
 deck = Deck()
 deck.shuffle()
@@ -77,17 +75,8 @@ deck.shuffle()
 card = deck.drawCard()
 card.show()
 
-
-#card.cardsuit #suit of drawn card
-
-
-# player = Player()
-# print(PlayerManage.playersuit)
-
-
-# print(PlayerManage.playersuit)
-
-# PlayerManage.print_suits()
+#If drawn cards is = player suit ( player point + +)
+print(card.cardsuit) #suit of drawn card
 
 #Print player objects
 PlayerManage.print_players()
