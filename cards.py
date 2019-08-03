@@ -44,7 +44,7 @@ class PlayerGroup:
 
     def create_players(self):
         for x in self.amount:
-            new_player = Player(x, (input("Pick a suit: ")), self.points)
+            new_player = Player(x, (input(f'Pick a suit Player {x}: ')), self.points)
             self.player_list.append(new_player)
 
     def print_players(self): 
@@ -56,10 +56,10 @@ class PlayerGroup:
             if x.playersuit == card.cardsuit:
                 x.points += 1
 # BETA NOT DONE
-#    def subract_bonus(self):        
-#        if all(self.points > 1 for x in self.player_list):
-#           if x.playersuit == card.cardsuit:
-#                x.points -= 1
+    def subract_bonus(self):        
+        if all(self.points > 1 for x in self.player_list):
+           if x.playersuit == card.cardsuit:
+                x.points -= 1
 
 # Player Object (instatiated in PlayerGroup)
 class Player:
@@ -95,7 +95,7 @@ card.show()
 #Add points
 PlayerManage.add_points()
 #If all values are above 1, bonus_subract
-#PlayerManage.subract_bonus()
+PlayerManage.subract_bonus()
 #Print player objects
 PlayerManage.print_players()
 #Draws a card and show it
@@ -105,7 +105,7 @@ card.show()
 #Add points
 PlayerManage.add_points()
 #If all values are above 1, bonus_subract
-#PlayerManage.subract_bonus()
+PlayerManage.subract_bonus()
 #Print player objects
 PlayerManage.print_players()
 #Draws a card and show it
