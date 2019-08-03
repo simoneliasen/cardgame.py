@@ -49,7 +49,17 @@ class PlayerGroup:
 
     def print_players(self): 
         for x in self.player_list:
-            print(str(x))
+            print(x)
+
+    def add_points(self):
+        for x in self.player_list:
+            if x.playersuit == card.cardsuit:
+                x.points += 1
+# BETA NOT DONE
+#    def subract_bonus(self):        
+#        if all(self.points > 1 for x in self.player_list):
+#           if x.playersuit == card.cardsuit:
+#                x.points -= 1
 
 # Player Object (instatiated in PlayerGroup)
 class Player:
@@ -60,7 +70,6 @@ class Player:
 
     def __str__(self):
         return f'Player{self.name} Suit: {self.playersuit} Points: {self.points}'
-
 
 # Instantiate PlayerGroup + and print list containing instatiated players
 PlayerManage = PlayerGroup()
@@ -75,8 +84,31 @@ deck.shuffle()
 card = deck.drawCard()
 card.show()
 
-#If drawn cards is = player suit ( player point + +)
-print(card.cardsuit) #suit of drawn card
-
+#Add points
+PlayerManage.add_points()
 #Print player objects
 PlayerManage.print_players()
+#Draws a card and show it
+card = deck.drawCard()
+card.show()
+
+#Add points
+PlayerManage.add_points()
+#If all values are above 1, bonus_subract
+#PlayerManage.subract_bonus()
+#Print player objects
+PlayerManage.print_players()
+#Draws a card and show it
+card = deck.drawCard()
+card.show()
+
+#Add points
+PlayerManage.add_points()
+#If all values are above 1, bonus_subract
+#PlayerManage.subract_bonus()
+#Print player objects
+PlayerManage.print_players()
+#Draws a card and show it
+card = deck.drawCard()
+card.show()
+
