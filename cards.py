@@ -55,11 +55,17 @@ class PlayerGroup:
         for x in self.player_list:
             if x.playersuit == card.cardsuit:
                 x.points += 1
-# BETA NOT DONE
-    def subract_bonus(self):        
-        if all(self.points > 1 for x in self.player_list):
-           if x.playersuit == card.cardsuit:
-                x.points -= 1
+# BETA NOT DONE -- add extra card drawn
+#    def subract_bonus(self):        
+#        if all(self.points > 1 for x in self.player_list):
+#            for x in self.player_list:
+#                if x.playersuit == card.cardsuit:
+#                    x.points -= 1
+
+    def winner(self):
+        for x in self.player_list:
+            if x.points == 5:
+                return f'Player{x.name} won!'
 
 # Player Object (instatiated in PlayerGroup)
 class Player:
@@ -94,8 +100,6 @@ card.show()
 
 #Add points
 PlayerManage.add_points()
-#If all values are above 1, bonus_subract
-PlayerManage.subract_bonus()
 #Print player objects
 PlayerManage.print_players()
 #Draws a card and show it
@@ -104,11 +108,89 @@ card.show()
 
 #Add points
 PlayerManage.add_points()
-#If all values are above 1, bonus_subract
-PlayerManage.subract_bonus()
 #Print player objects
 PlayerManage.print_players()
 #Draws a card and show it
 card = deck.drawCard()
 card.show()
+
+#Add points
+PlayerManage.add_points()
+#Print player objects
+PlayerManage.print_players()
+#Draws a card and show it
+card = deck.drawCard()
+card.show()
+
+#Add points
+PlayerManage.add_points()
+#Print player objects
+PlayerManage.print_players()
+#Draws a card and show it
+card = deck.drawCard()
+card.show()
+
+#Add points
+PlayerManage.add_points()
+#Print player objects
+PlayerManage.print_players()
+#Draws a card and show it
+card = deck.drawCard()
+card.show()
+
+#Add points
+PlayerManage.add_points()
+#Print player objects
+PlayerManage.print_players()
+#Draws a card and show it
+card = deck.drawCard()
+card.show()
+
+#Add points
+PlayerManage.add_points()
+#Print player objects
+PlayerManage.print_players()
+#Draws a card and show it
+card = deck.drawCard()
+card.show()
+
+#Add points
+PlayerManage.add_points()
+#Print player objects
+PlayerManage.print_players()
+#Draws a card and show it
+card = deck.drawCard()
+card.show()
+
+#Add points
+PlayerManage.add_points()
+#Print player objects
+PlayerManage.print_players()
+#Draws a card and show it
+card = deck.drawCard()
+card.show()
+
+#Add points
+PlayerManage.add_points()
+#Print player objects
+PlayerManage.print_players()
+#Draws a card and show it
+card = deck.drawCard()
+card.show()
+
+#Add points
+PlayerManage.add_points()
+#Print player objects
+PlayerManage.print_players()
+#Draws a card and show it
+card = deck.drawCard()
+card.show()
+
+print(PlayerManage.winner())
+
+#Functions to add:
+#1. Pulle extra card if all points >= 1,2,3,4:
+# Print only once (while loop?)
+#2. Display message with points at last
+#3. Integrate with flask
 
