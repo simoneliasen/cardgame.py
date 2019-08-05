@@ -1,6 +1,5 @@
 # cardgame.py
-Simple cardgame made with Object oriented programming in python
-
+Simple cardgame made for practising OOP (object oriented programming) in Python
 
 ## The Rules are simple
 
