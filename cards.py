@@ -32,73 +32,6 @@ class Deck:
     def drawCard(self):
         return self.cards.pop()
 
-#PLAYER MANAGEMENT
-class PlayerGroup:
-    def __init__(self):
-        self.amount= []
-        self.player_list = []
-        self.points = 0
-
-    def amount_of_players(self):
-        self.amount = range(int(input("How many players? ")))
-
-    def create_players(self):
-        for x in self.amount:
-            new_player = Player(x, (input(f'Pick a suit Player {x}: ')), self.points)
-            self.player_list.append(new_player)
-
-    def print_players(self): 
-        for x in self.player_list:
-            print(x)
-
-    def add_points(self):
-        for x in self.player_list:
-            if x.playersuit == card.cardsuit:
-                x.points += 1
-
-# BETA NOT DONE 
-    def subtract_bonus1(self):
-        if all(player.points >= 1 for player in self.player_list): #Works until here
-                print('Cardbonus1')
-
-    def subtract_bonus2(self):
-        if all(player.points >= 2 for player in self.player_list): #Works until here
-                print('Cardbonus2')
-
-    def subtract_bonus3(self):
-        if all(player.points >= 3 for player in self.player_list): #Works until here
-                print('Cardbonus3')
-
-    def subtract_bonus4(self):
-        if all(player.points >= 4 for player in self.player_list): #Works until here
-                print('Cardbonus4')
-
-#EXAMPLE:
-#Draw card if all >= 1
-#If cardsuit = playersuits =- 1
-#Don't run again if it returns true
-
-#RANDOM SPAGHETTI BELOW
-        # run_once = 0
-        # while run_once == 0:
-            # if all(player.points >= 1 for player in self.player_list): #Works until here
-            #     print('Hello world')
-                # run_once += 1
-            # else:
-            #     break
-
-
-                # for x in self.player_list:
-                #     if x.playersuit == card.cardsuit:
-                #         x.points -= 1
-                #         run_once += 1
-                #         print('It worked')
-
-    def winner(self):
-        for x in self.player_list:
-            if x.points == 5:
-                return f'Player{x.name} won!'
-
 # PLAYBER OBJECT (instantiated via PlayerGroup)
 class Player:
     def __init__(self, name, playersuit, points):
@@ -109,7 +42,54 @@ class Player:
     def __str__(self):
         return f'Player{self.name} Suit: {self.playersuit} Points: {self.points}'
 
-# Instantiate PlayerGroup + and print list containing instatiated players
+#PLAYER MANAGEMENT
+class PlayerGroup:
+    def __init__(self):
+        self.amount= []
+        self.player_list = []
+        self.points = 0
+
+    def amount_of_players(self):
+        self.amount = range(int(input("\nHow many players? ")))
+
+    def create_players(self):
+        for x in self.amount:
+            new_player = Player(x, (input(f'Pick a suit Player {x}: ')), self.points)
+            self.player_list.append(new_player)
+
+    def print_players(self): 
+        for player in self.player_list:
+            print(player)
+
+    def add_points(self):
+        for x in self.player_list:
+            if x.playersuit == card.cardsuit:
+                x.points += 1
+
+    def subtract_bonus(self):
+        if all(player.points >= 1 for player in self.player_list): 
+            card = deck.drawCard() 
+            print(f'Bonus card: {card.value} of {card.cardsuit}')
+            for x in self.player_list:
+                if x.playersuit == card.cardsuit:
+                    x.points += 5
+
+    def winner(self):
+        for x in self.player_list:
+            if x.points >= 5:
+                return f'Player{x.name} won!'
+
+    def initialize_round(self):
+        print('\n')
+        deck.shuffle()
+        card = deck.drawCard()
+        card.show()
+        PlayerManage.add_points()
+        PlayerManage.print_players()
+        PlayerManage.subtract_bonus()
+    
+        
+# START GAME: Instantiate players + deck of cards
 PlayerManage = PlayerGroup()
 PlayerManage.amount_of_players()
 PlayerManage.create_players()
@@ -117,72 +97,36 @@ PlayerManage.create_players()
 deck = Deck()
 deck.shuffle()
 
-#Draws a card and show it
+#Draw card
 card = deck.drawCard()
-card.show()
+# Initialize Round
+PlayerManage.initialize_round()
 
-## A BOUNCH OF SPAGHETTI DOWNWARDS
-
-#Add points
-PlayerManage.add_points()
-#Print player objects
-PlayerManage.print_players()
-#Draws a card and show it
 card = deck.drawCard()
-card.show()
-#Subtract bonus check
-PlayerManage.subtract_bonus1()
+PlayerManage.initialize_round()
 
-#Add points
-PlayerManage.add_points()
-#Print player objects
-PlayerManage.print_players()
-#Draws a card and show it
 card = deck.drawCard()
-card.show()
-#Subtract bonus check
-PlayerManage.subtract_bonus1()
+PlayerManage.initialize_round()
 
-#Add points
-PlayerManage.add_points()
-#Print player objects
-PlayerManage.print_players()
-#Draws a card and show it
 card = deck.drawCard()
-card.show()
-#Subtract bonus check
-PlayerManage.subtract_bonus1()
+PlayerManage.initialize_round()
 
-#Add points
-PlayerManage.add_points()
-#Print player objects
-PlayerManage.print_players()
-#Draws a card and show it
 card = deck.drawCard()
-card.show()
-#Subtract bonus check
-PlayerManage.subtract_bonus1()
+PlayerManage.initialize_round()
 
-#Add points
-PlayerManage.add_points()
-#Print player objects
-PlayerManage.print_players()
-#Draws a card and show it
 card = deck.drawCard()
-card.show()
-#Subtract bonus check
-PlayerManage.subtract_bonus1()
+PlayerManage.initialize_round()
 
-#Add points
-PlayerManage.add_points()
-#Print player objects
-PlayerManage.print_players()
-#Draws a card and show it
 card = deck.drawCard()
-card.show()
-#Subtract bonus check
-PlayerManage.subtract_bonus1()
+PlayerManage.initialize_round()
 
 #Print winner
+print('\n')
 print(PlayerManage.winner())
+
+
+#Make bonuscard only run once
+#Make correct card get points
+#add bonuscard 1,2,3,4,5
+#run on button click w. flask
 
