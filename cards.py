@@ -86,8 +86,7 @@ class PlayerGroup:
         PlayerManage.add_points()
         PlayerManage.print_players()
         PlayerManage.subtract_bonus()
-    
-        
+   
 # START GAME: Instantiate players + deck of cards
 PlayerManage = PlayerGroup()
 PlayerManage.amount_of_players()
@@ -129,7 +128,5 @@ PlayerManage.initialize_round()
 print('\n')
 print(PlayerManage.winner())
 
-#Make bonuscard only run once
+#Make bonuscard only run once (decorator)
 #add bonuscard 1,2,3,4,5
-#run on button click w. flask
-
