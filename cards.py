@@ -82,7 +82,6 @@ class PlayerGroup:
     def initialize_round(self):
         print('\n')
         deck.shuffle()
-        card = deck.drawCard()
         card.show()
         PlayerManage.add_points()
         PlayerManage.print_players()
@@ -93,30 +92,36 @@ class PlayerGroup:
 PlayerManage = PlayerGroup()
 PlayerManage.amount_of_players()
 PlayerManage.create_players()
+
 #Create deck, and shuffle
 deck = Deck()
 deck.shuffle()
 
-#Draw card
-card = deck.drawCard()
-# Initialize Round
-PlayerManage.initialize_round()
-
+#Draw card & Initialize Round
 card = deck.drawCard()
 PlayerManage.initialize_round()
 
+#Draw card & Initialize Round
 card = deck.drawCard()
 PlayerManage.initialize_round()
 
+#Draw card & Initialize Round
 card = deck.drawCard()
 PlayerManage.initialize_round()
 
+#Draw card & Initialize Round
 card = deck.drawCard()
 PlayerManage.initialize_round()
 
+#Draw card & Initialize Round
 card = deck.drawCard()
 PlayerManage.initialize_round()
 
+#Draw card & Initialize Round
+card = deck.drawCard()
+PlayerManage.initialize_round()
+
+#Draw card & Initialize Round
 card = deck.drawCard()
 PlayerManage.initialize_round()
 
@@ -124,9 +129,7 @@ PlayerManage.initialize_round()
 print('\n')
 print(PlayerManage.winner())
 
-
 #Make bonuscard only run once
-#Make correct card get points
 #add bonuscard 1,2,3,4,5
 #run on button click w. flask
 
