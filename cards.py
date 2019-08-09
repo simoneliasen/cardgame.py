@@ -148,8 +148,3 @@ while PlayerManage.winner() is None:
 #Print winner
 print('\n')
 print(PlayerManage.winner())
-
-
-#TO do
-# Add subtract level 2,3,4
-# Add UI
