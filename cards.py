@@ -48,7 +48,10 @@ class PlayerGroup:
         self.amount= []
         self.player_list = []
         self.points = 0
-        self.subtracted = False
+        self.subtracted1 = False
+        self.subtracted2 = False
+        self.subtracted3 = False
+        self.subtracted4 = False
 
     def amount_of_players(self):
         self.amount = range(int(input("\nHow many players? ")))
@@ -67,8 +70,8 @@ class PlayerGroup:
             if x.playersuit == card.cardsuit:
                 x.points += 1
 
-    def subtract_bonus(self):
-        if self.subtracted:
+    def subtract_bonus1(self):
+        if self.subtracted1:
             return
         if all(player.points >= 1 for player in self.player_list): 
             card = deck.drawCard() 
@@ -76,7 +79,40 @@ class PlayerGroup:
             for x in self.player_list:
                 if x.playersuit == card.cardsuit:
                     x.points -= 1
-            self.subtracted = True
+            self.subtracted1 = True
+
+    def subtract_bonus2(self):
+        if self.subtracted2:
+            return
+        if all(player.points >= 2 for player in self.player_list): 
+            card = deck.drawCard() 
+            print(f'Bonus card: {card.value} of {card.cardsuit}')
+            for x in self.player_list:
+                if x.playersuit == card.cardsuit:
+                    x.points -= 1
+            self.subtracted2 = True
+
+    def subtract_bonus3(self):
+        if self.subtracted3:
+            return
+        if all(player.points >= 3 for player in self.player_list): 
+            card = deck.drawCard() 
+            print(f'Bonus card: {card.value} of {card.cardsuit}')
+            for x in self.player_list:
+                if x.playersuit == card.cardsuit:
+                    x.points -= 1
+            self.subtracted3 = True
+
+    def subtract_bonus4(self):
+        if self.subtracted4:
+            return
+        if all(player.points >= 4 for player in self.player_list): 
+            card = deck.drawCard() 
+            print(f'Bonus card: {card.value} of {card.cardsuit}')
+            for x in self.player_list:
+                if x.playersuit == card.cardsuit:
+                    x.points -= 1
+            self.subtracted4 = True
 
     def winner(self):
         for x in self.player_list:
@@ -89,7 +125,10 @@ class PlayerGroup:
         card.show()
         PlayerManage.add_points()
         PlayerManage.print_players()
-        PlayerManage.subtract_bonus()
+        PlayerManage.subtract_bonus1()
+        PlayerManage.subtract_bonus2()
+        PlayerManage.subtract_bonus3()
+        PlayerManage.subtract_bonus4()
         input("Press Enter to continue...")
    
 # START GAME: Instantiate players + deck of cards
@@ -111,3 +150,6 @@ print('\n')
 print(PlayerManage.winner())
 
 
+#TO do
+# Add subtract level 2,3,4
+# Add UI
