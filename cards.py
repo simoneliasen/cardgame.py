@@ -25,14 +25,14 @@ class Deck:
             r = random.randint(0, i)
             self.cards[i], self.cards[r] = self.cards[r], self.cards[i]
 
-    def show(self, card, player): #in code (keep)
+    def show(self, card, player):
         for c in self.cards:
             c.show()
 
     def drawCard(self):
         return self.cards.pop()
 
-# PLAYBER OBJECT (instantiated via PlayerGroup)
+# PLAYER OBJECT (instantiated via PlayerGroup)
 class Player:
     def __init__(self, name, playersuit, points):
         self.name = name
@@ -48,6 +48,7 @@ class PlayerGroup:
         self.amount= []
         self.player_list = []
         self.points = 0
+        self.subtracted = False
 
     def amount_of_players(self):
         self.amount = range(int(input("\nHow many players? ")))
@@ -67,12 +68,15 @@ class PlayerGroup:
                 x.points += 1
 
     def subtract_bonus(self):
+        if self.subtracted:
+            return
         if all(player.points >= 1 for player in self.player_list): 
             card = deck.drawCard() 
             print(f'Bonus card: {card.value} of {card.cardsuit}')
             for x in self.player_list:
                 if x.playersuit == card.cardsuit:
-                    x.points += 5
+                    x.points -= 1
+            self.subtracted = True
 
     def winner(self):
         for x in self.player_list:
@@ -86,6 +90,7 @@ class PlayerGroup:
         PlayerManage.add_points()
         PlayerManage.print_players()
         PlayerManage.subtract_bonus()
+        input("Press Enter to continue...")
    
 # START GAME: Instantiate players + deck of cards
 PlayerManage = PlayerGroup()
@@ -96,37 +101,13 @@ PlayerManage.create_players()
 deck = Deck()
 deck.shuffle()
 
-#Draw card & Initialize Round
-card = deck.drawCard()
-PlayerManage.initialize_round()
-
-#Draw card & Initialize Round
-card = deck.drawCard()
-PlayerManage.initialize_round()
-
-#Draw card & Initialize Round
-card = deck.drawCard()
-PlayerManage.initialize_round()
-
-#Draw card & Initialize Round
-card = deck.drawCard()
-PlayerManage.initialize_round()
-
-#Draw card & Initialize Round
-card = deck.drawCard()
-PlayerManage.initialize_round()
-
-#Draw card & Initialize Round
-card = deck.drawCard()
-PlayerManage.initialize_round()
-
-#Draw card & Initialize Round
-card = deck.drawCard()
-PlayerManage.initialize_round()
+#draw cards until winner is found
+while PlayerManage.winner() is None:
+    card = deck.drawCard()
+    PlayerManage.initialize_round()
 
 #Print winner
 print('\n')
 print(PlayerManage.winner())
 
-#Make bonuscard only run once (decorator)
-#add bonuscard 1,2,3,4,5
+
