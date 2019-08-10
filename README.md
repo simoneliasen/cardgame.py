@@ -11,4 +11,8 @@ Simple cardgame made for practising OOP (object oriented programming) in Python
 
 This game can be used as a drinking game, where the winner gives out 5 sips, and the remaining players drink the amount of points they were from 5 points.
 
-https://cloud.githubusercontent.com/assets/124808/21915191/89dffcac-d97b-11e6-8b46-ea5fbddde02a.png
+![alt text](http://korius.dk/github/1.png)
+
+![alt text](http://korius.dk/github/2.png)
+
+
