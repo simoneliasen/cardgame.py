@@ -1,8 +1,7 @@
 # cardgame.py
 Simple cardgame made for practising OOP (object oriented programming) in Python, currently working in the CLI
 
-![alt text](http://korius.dk/github/1.png)
-![gif text](http://korius.dk/github/cards2.gif)
+![gif of gameplay](http://korius.dk/github/cards2.gif)
 
 ## The Rules are simple
 
